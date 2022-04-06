@@ -13,7 +13,7 @@ from fiery.trainer import TrainingModule
 def main():
     args = get_parser().parse_args()
     cfg = get_cfg(args)
-
+    
     trainloader, valloader = prepare_dataloaders(cfg)
     model = TrainingModule(cfg.convert_to_dict())
 
@@ -31,7 +31,7 @@ def main():
     )
     tb_logger = pl.loggers.TensorBoardLogger(save_dir=save_dir)
     trainer = pl.Trainer(
-        gpus=cfg.GPUS,
+        gpus=[0],
         accelerator='ddp',
         precision=cfg.PRECISION,
         sync_batchnorm=True,

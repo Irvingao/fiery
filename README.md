@@ -37,6 +37,15 @@ If you find our work useful, please consider citing:
 ## ⚙ Setup
 - Create the [conda](https://docs.conda.io/en/latest/miniconda.html) environment by running `conda env create`.
 
+`conda env create -f environment.yml`
+
+```
+conda create -n fiery python=3.7
+conda activate fiery
+pip install torch==1.8.0+cu111 torchvision==0.9.0+cu111 torchaudio==0.8.0 -f https://download.pytorch.org/whl/torch_stable.html
+pip install -r requirements.txt
+```
+
 ## 🏄 Prediction
 ### Visualisation
 
@@ -71,6 +80,8 @@ All the configs are in the folder `fiery/configs`
 ## 🏊 Training
 To train the model from scratch on NuScenes:
 - Run `python train.py --config fiery/configs/baseline.yml DATASET.DATAROOT ${NUSCENES_DATAROOT}`.
+
+- My `python train.py --config fiery/configs/baseline.yml DATASET.DATAROOT /home/pc/Dataset/nuScenes/ DATASET.VERSION mini`.
 
 To train on single GPU add the flag `GPUS [0]`, and to change the batch size use the flag `BATCHSIZE ${DESIRED_BATCHSIZE}`.
 
